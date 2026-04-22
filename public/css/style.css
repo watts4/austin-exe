@@ -292,6 +292,79 @@ body {
 .calc-grid .eq { background: #a8b8c8; grid-column: span 2; }
 .calc-grid .clr { background: #c8a8a8; }
 
+/* Minesweeper */
+.minesweeper { padding: 6px !important; background: #bdbdbd !important; }
+.ms-frame {
+  padding: 6px;
+  background: #bdbdbd;
+  border: 3px inset #bdbdbd;
+}
+.ms-hud {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 6px;
+  background: #bdbdbd;
+  border: 2px inset #bdbdbd;
+  margin-bottom: 6px;
+}
+.ms-counter {
+  background: #000;
+  color: #f33;
+  font-family: "Courier New", monospace;
+  font-weight: bold;
+  font-size: 22px;
+  padding: 2px 6px;
+  border: 1px inset #bdbdbd;
+  letter-spacing: 2px;
+  min-width: 52px;
+  text-align: center;
+}
+.ms-face {
+  width: 32px !important;
+  height: 32px !important;
+  font-size: 18px !important;
+  min-width: unset !important;
+  padding: 0 !important;
+}
+.ms-grid {
+  display: grid;
+  border: 3px inset #bdbdbd;
+  padding: 0;
+  background: #808080;
+  width: fit-content;
+}
+.ms-cell {
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  padding: 0;
+  font-family: "Courier New", monospace;
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 1;
+  background: #bdbdbd;
+  border: 2px outset #fff;
+  cursor: pointer;
+  user-select: none;
+  touch-action: manipulation;
+  color: #000;
+}
+.ms-cell.revealed {
+  background: #bdbdbd;
+  border: 1px solid #808080;
+}
+.ms-cell.mine { background: #ea4335; }
+.ms-cell.exploded { background: #c00; }
+.ms-cell.n1 { color: #0000ff; }
+.ms-cell.n2 { color: #008200; }
+.ms-cell.n3 { color: #ff0000; }
+.ms-cell.n4 { color: #000084; }
+.ms-cell.n5 { color: #840000; }
+.ms-cell.n6 { color: #008284; }
+.ms-cell.n7 { color: #000000; }
+.ms-cell.n8 { color: #848484; }
+
 /* Cake confetti */
 #confetti-canvas {
   position: fixed;
