@@ -436,6 +436,10 @@ const BIRTHDAY_CLIPS = [
   { file: "assets/audio/birthday_10.wav", text: "i'm bad at this. happy birthday, austin. glad you exist." },
   { file: "assets/audio/birthday_11.wav", text: "happy birthday, kid. the ocean says hey." },
   { file: "assets/audio/birthday_12.wav", text: "austin! happy birthday! the cake is optional. you are not." },
+  { file: "assets/audio/birthday_13.wav", text: "I'll never forget my father's last words to me just before he died: Are you sure you fixed the brakes?" },
+  { file: "assets/audio/birthday_14.wav", text: "Give a man a match, and he'll be warm for a few hours. Set a man on fire, and he will be warm for the rest of his life." },
+  { file: "assets/audio/birthday_15.wav", text: "When I die, I want to die like my grandfather — who died peacefully in his sleep. Not screaming, like all the passengers in his car." },
+  { file: "assets/audio/birthday_16.wav", text: "My grief counselor died. He was so good, I don't even care." },
 ];
 
 let _lastClipIdx = -1;
