@@ -69,7 +69,6 @@ const WM = {
     const spec = APPS[app];
     titleBar.textContent = spec.title;
     body.innerHTML = "";
-    body.classList.add(spec.bodyClass || "");
 
     // Position window — keep it fully on-screen, especially on mobile
     const vw = window.innerWidth;
@@ -448,11 +447,23 @@ const CakeApp = {
           if (Date.now() < end) requestAnimationFrame(frame);
         })();
       }
-      msg.textContent = BIRTHDAY_LINES[Math.floor(Math.random() * BIRTHDAY_LINES.length)];
-      // try to play voice (optional; audio file is placeholder until VoxCPM2 WAV is committed)
+      const line = BIRTHDAY_LINES[Math.floor(Math.random() * BIRTHDAY_LINES.length)];
+      msg.textContent = line;
+      // Try WAV first (cloned voice if present), fall back to browser speechSynthesis
       const a = new Audio("assets/audio/birthday.wav");
       a.volume = 0.9;
-      a.play().catch(() => { /* no audio file yet, silent fallback */ });
+      a.play().catch(() => {
+        if ("speechSynthesis" in window) {
+          try {
+            const utter = new SpeechSynthesisUtterance(line);
+            utter.rate = 0.95;
+            utter.pitch = 1.0;
+            utter.volume = 0.9;
+            window.speechSynthesis.cancel();
+            window.speechSynthesis.speak(utter);
+          } catch (_) {}
+        }
+      });
     };
     btn.addEventListener("click", fire);
     setTimeout(fire, 250);
