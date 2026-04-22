@@ -83,7 +83,6 @@ const WM = {
 
     document.body.appendChild(el);
     spec.init(body, el);
-    return el;
 
     // drag
     this.makeDraggable(el, el.querySelector(".title-bar"));
