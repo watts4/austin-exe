@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AUSTIN.EXE</title>
+  <link rel="stylesheet" href="https://unpkg.com/98.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div id="desktop">
+    <!-- Desktop icons -->
+    <div class="icon" data-app="terminal" style="top:40px; left:40px;">
+      <div class="icon-img">💻</div><div class="icon-label">Terminal</div>
+    </div>
+    <div class="icon" data-app="notepad" style="top:40px; left:130px;">
+      <div class="icon-img">📝</div><div class="icon-label">Haiku.txt</div>
+    </div>
+    <div class="icon" data-app="mediaplayer" style="top:40px; left:220px;">
+      <div class="icon-img">🎵</div><div class="icon-label">Media Player</div>
+    </div>
+    <div class="icon" data-app="calculator" style="top:40px; left:310px;">
+      <div class="icon-img">🧮</div><div class="icon-label">Calc.exe</div>
+    </div>
+    <div class="icon" data-app="cake" style="top:40px; left:400px;">
+      <div class="icon-img">🎂</div><div class="icon-label">DO NOT OPEN</div>
+    </div>
+  </div>
+
+  <!-- Taskbar -->
+  <div id="taskbar">
+    <button id="start-btn">
+      <span class="start-logo">▓</span> Start
+    </button>
+    <div id="task-buttons"></div>
+    <div id="tray">
+      <span id="clock">--:-- --</span>
+    </div>
+  </div>
+
+  <!-- Start menu (hidden by default) -->
+  <div id="start-menu" style="display:none;">
+    <div class="start-banner">austin<span>EXE</span></div>
+    <div class="start-items">
+      <button data-app="terminal">💻 Terminal</button>
+      <button data-app="notepad">📝 Haiku.txt</button>
+      <button data-app="mediaplayer">🎵 Media Player</button>
+      <button data-app="calculator">🧮 Calc.exe</button>
+      <button data-app="cake">🎂 DO NOT OPEN</button>
+    </div>
+    <div class="start-footer">happy birthday, austin</div>
+  </div>
+
+  <!-- Window templates (cloned by main.js) -->
+  <template id="tpl-window">
+    <div class="window">
+      <div class="title-bar">
+        <div class="title-bar-text"></div>
+        <div class="title-bar-controls">
+          <button aria-label="Minimize"></button>
+          <button aria-label="Close" class="close-btn"></button>
+        </div>
+      </div>
+      <div class="window-body"></div>
+    </div>
+  </template>
+
+  <canvas id="confetti-canvas"></canvas>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
