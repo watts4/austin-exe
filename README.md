@@ -5,7 +5,7 @@ A chaotic-good birthday desktop for Austin. Static site on Firebase Hosting.
 ## What's inside
 
 - **Terminal** — chat with AUSTIN.AI, a surf-punk beach-town AI (Gemini Flash).
-- **Haiku.txt** — a new darkly funny haiku every open.
+- **Wordsalad.txt** — a new darkly funny fragment / phrase / half-thought every open.
 - **Media Player** — rotating lo-fi/beach-rock mixes.
 - **Calc.exe** — ominous numerology generator (no clichés).
 - **DO NOT OPEN.exe** — 🎂

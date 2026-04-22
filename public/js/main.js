@@ -207,8 +207,8 @@ const TerminalApp = {
   },
 };
 
-/* ---------- NOTEPAD (dark haikus) ---------- */
-const HAIKU_SEEDS = [
+/* ---------- WORDSALAD (short fragments, phrases, half-thoughts) ---------- */
+const WORDSALAD_SEEDS = [
   "a programmer missing a deadline by choice",
   "a beach town slowly sinking",
   "a half-broken vintage synthesizer",
@@ -222,25 +222,28 @@ const HAIKU_SEEDS = [
   "a todo list written in 2004",
   "a laptop sticker that still means something",
   "a friend who is older today than yesterday",
+  "an overdue library book about the moon",
+  "the exact moment a song turns from happy to sad",
+  "a bar that has both surfboards and spreadsheets",
 ];
 
 const NotepadApp = {
   init(body) {
     body.classList.add("notepad");
-    body.innerHTML = `<div class="haiku">loading...</div><div><button class="reroll">New haiku</button></div>`;
-    const haikuEl = body.querySelector(".haiku");
+    body.innerHTML = `<div class="haiku">loading...</div><div><button class="reroll">Again</button></div>`;
+    const out = body.querySelector(".haiku");
     const btn = body.querySelector(".reroll");
     const load = async () => {
-      const seed = HAIKU_SEEDS[Math.floor(Math.random() * HAIKU_SEEDS.length)];
-      haikuEl.textContent = "writing...";
+      const seed = WORDSALAD_SEEDS[Math.floor(Math.random() * WORDSALAD_SEEDS.length)];
+      out.textContent = "writing...";
       try {
         const text = await gemini(
-          `Write one 5-7-5 haiku. Subject: ${seed}. Tone: darkly funny, bittersweet, slightly unhinged, but with a glimmer of warmth. Output ONLY the three lines of the haiku, no commentary, no title, no quotes.`,
-          { temperature: 1.1, max: 80 }
+          `Write a short fragment — 1 to 3 lines total. Could be a half-thought, a stray phrase, a single image, a tiny observation. Subject: ${seed}. Tone: darkly funny, bittersweet, slightly unhinged, with a glimmer of warmth. It does NOT need to be a haiku or any specific form. Output only the fragment. No title, no quotes, no commentary.`,
+          { temperature: 1.15, max: 90 }
         );
-        haikuEl.textContent = text;
+        out.textContent = text;
       } catch (e) {
-        haikuEl.textContent = `[notepad has crashed]\n${e.message.slice(0, 100)}`;
+        out.textContent = `[notepad has crashed]\n${e.message.slice(0, 100)}`;
       }
     };
     btn.addEventListener("click", load);
@@ -499,7 +502,7 @@ const CakeApp = {
 /* ---------- app registry ---------- */
 const APPS = {
   terminal: { title: "C:\\TERMINAL.EXE", init: TerminalApp.init },
-  notepad: { title: "haiku.txt - Notepad", init: NotepadApp.init },
+  notepad: { title: "wordsalad.txt - Notepad", init: NotepadApp.init },
   mediaplayer: { title: "Media Player", init: MediaPlayerApp.init },
   calculator: { title: "Calc.exe", init: CalculatorApp.init },
   cake: { title: "DO NOT OPEN.exe", init: CakeApp.init },
