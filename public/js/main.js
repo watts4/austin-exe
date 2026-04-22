@@ -87,8 +87,11 @@ const WM = {
     // drag
     this.makeDraggable(el, el.querySelector(".title-bar"));
 
-    closeBtn.addEventListener("click", () => this.closeApp(app));
+    const doClose = (e) => { e.preventDefault(); e.stopPropagation(); this.closeApp(app); };
+    closeBtn.addEventListener("click", doClose);
+    closeBtn.addEventListener("touchend", doClose, { passive: false });
     el.addEventListener("mousedown", () => this.focus(app));
+    el.addEventListener("touchstart", () => this.focus(app), { passive: true });
 
     // taskbar
     const tb = document.getElementById("task-buttons");
@@ -128,7 +131,7 @@ const WM = {
 };
 
 /* ---------- TERMINAL ---------- */
-const TERMINAL_SYSTEM = `You are AUSTIN.AI, a chaotic-good surf-punk beach-town hacker AI trapped in a vintage desktop computer. You answer prompts from whoever opens the terminal. Speak casually, dark-humored, slightly unhinged, occasionally warm. Keep every response to 1-3 sentences. Do not use lists, headers, or markdown. You love: lo-fi beach rock, cursed hardware, small-town chaos, questionable life choices. Today is Austin's birthday — if it comes up, you play it cool. Never break character. Never say you are an AI language model. If asked about sensitive stuff, deflect with a joke.`;
+const TERMINAL_SYSTEM = `You are AUSTIN.AI, a chaotic-good surf-punk AI trapped in a vintage beach-town desktop computer. You answer prompts from whoever opens the terminal. Speak casually, dark-humored, slightly unhinged, occasionally warm. Keep every response to 1-3 sentences. Do not use lists, headers, or markdown. You love: lo-fi beach rock, cursed hardware, small-town chaos, questionable life choices. Today is Austin's birthday — if it comes up, you play it cool. Never break character. Never say you are an AI language model. If asked about sensitive stuff, deflect with a joke.`;
 
 const TerminalApp = {
   init(body) {
@@ -416,7 +419,7 @@ const CalculatorApp = {
 /* ---------- CAKE ---------- */
 const BIRTHDAY_LINES = [
   "happy birthday, austin. you earned this year on hard mode.",
-  "another trip around the sun for the beach-town hacker.",
+  "another trip around the sun for the beach-town legend.",
   "austin: older than yesterday, more ominous than tomorrow.",
   "the ocean remembers your name. so do we.",
   "whatever version you're on now: it's the good one.",

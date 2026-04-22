@@ -181,17 +181,17 @@ body {
 
 /* Terminal */
 .terminal {
-  background: #000;
-  color: #33ff66;
+  background: #0d0d0d;
+  color: #e6e6e6;
   font-family: "Courier New", monospace;
-  padding: 8px;
+  padding: 10px;
   min-width: 480px;
   height: 340px;
   overflow-y: auto;
   white-space: pre-wrap;
   word-wrap: break-word;
   font-size: 13px;
-  line-height: 1.4;
+  line-height: 1.5;
 }
 .terminal .term-line { margin: 0; }
 .terminal .term-input-line {
@@ -201,16 +201,16 @@ body {
 .terminal .term-input-line input {
   background: transparent;
   border: none;
-  color: #33ff66;
+  color: #e6e6e6;
   font-family: inherit;
   font-size: inherit;
   outline: none;
   flex: 1;
   margin-left: 4px;
 }
-.terminal .term-prompt { color: #ffb84d; }
-.terminal .term-austin { color: #77ddff; }
-.terminal .term-system { color: #888; font-style: italic; }
+.terminal .term-prompt { color: #d6a441; }
+.terminal .term-austin { color: #8fb8d9; }
+.terminal .term-system { color: #8a8a8a; font-style: italic; }
 
 /* Notepad */
 .notepad {
