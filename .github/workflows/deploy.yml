@@ -10,6 +10,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Inject Gemini API key into config.js
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          sed "s|__GEMINI_API_KEY__|$GEMINI_API_KEY|" public/js/config.template.js > public/js/config.js
+          echo "config.js generated ($(wc -c < public/js/config.js) bytes)"
+
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}

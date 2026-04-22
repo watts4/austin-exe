@@ -5,3 +5,7 @@ firebase-debug.log
 .DS_Store
 .env
 .env.local
+
+# config.js contains the Gemini API key at deploy time; never commit it
+public/js/config.js
+
