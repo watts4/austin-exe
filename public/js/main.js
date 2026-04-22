@@ -71,8 +71,16 @@ const WM = {
     body.innerHTML = "";
     body.classList.add(spec.bodyClass || "");
 
-    el.style.top = (60 + Math.random() * 100) + "px";
-    el.style.left = (80 + Math.random() * 200) + "px";
+    // Position window — keep it fully on-screen, especially on mobile
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+    const estW = Math.min(520, vw - 20);
+    const estH = Math.min(460, vh - 60);
+    const maxLeft = Math.max(10, vw - estW - 10);
+    const maxTop = Math.max(10, vh - estH - 50);
+    el.style.left = Math.min(maxLeft, 40 + this.windows.size * 24) + "px";
+    el.style.top = Math.min(maxTop, 60 + this.windows.size * 24) + "px";
+    el.style.maxWidth = (vw - 20) + "px";
 
     document.body.appendChild(el);
     spec.init(body, el);
@@ -475,18 +483,14 @@ function updateClock() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  // icons
+  // icons — single tap/click opens. Less 98-authentic, more mobile-friendly.
   document.querySelectorAll(".icon").forEach(icon => {
-    icon.addEventListener("dblclick", () => WM.openApp(icon.dataset.app));
-    // single-click also opens (mobile-friendly, 98-unfriendly, too bad)
-    let clicks = 0;
-    icon.addEventListener("click", () => {
-      clicks++;
-      setTimeout(() => {
-        if (clicks === 1) WM.openApp(icon.dataset.app);
-        clicks = 0;
-      }, 250);
-    });
+    const open = (e) => {
+      e.preventDefault();
+      WM.openApp(icon.dataset.app);
+    };
+    icon.addEventListener("click", open);
+    icon.addEventListener("touchend", open, { passive: false });
   });
 
   // start menu

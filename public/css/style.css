@@ -327,8 +327,20 @@ body {
 
 /* Mobile touch */
 @media (max-width: 640px) {
-  .icon { width: 64px; }
-  .window { max-width: 96vw; }
-  .terminal { min-width: unset; width: 88vw; height: 50vh; }
-  .mediaplayer, .calculator, .notepad { max-width: 88vw; }
+  .icon { width: 72px; }
+  .window { max-width: calc(100vw - 20px); min-width: unset; }
+  .window .window-body { max-width: calc(100vw - 20px); }
+  .terminal { min-width: unset; width: calc(100vw - 40px); max-width: 94vw; height: 50vh; font-size: 12px; }
+  .mediaplayer, .calculator, .notepad {
+    min-width: unset;
+    max-width: calc(100vw - 40px);
+    width: calc(100vw - 40px);
+  }
+  .mediaplayer { width: auto; }
+  .mp-embed iframe { max-width: 100%; }
+  .calc-grid button { padding: 14px 4px; font-size: 14px; }
+  #start-menu { width: 100vw; left: 0 !important; }
 }
+/* Ensure close button always works on touch */
+.title-bar-controls button { touch-action: manipulation; }
+.icon { touch-action: manipulation; }
