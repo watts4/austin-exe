@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1f6cc7"/>
+      <stop offset="50%" stop-color="#3e8de4"/>
+      <stop offset="100%" stop-color="#9ad0f5"/>
+    </linearGradient>
+    <linearGradient id="hill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7bc83d"/>
+      <stop offset="60%" stop-color="#4d8f1c"/>
+      <stop offset="100%" stop-color="#2c5e0e"/>
+    </linearGradient>
+    <radialGradient id="cloud-grad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.95"/>
+      <stop offset="60%" stop-color="#fff" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="hill-tex" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3" seed="7"/>
+      <feColorMatrix values="0 0 0 0 0  0 0 0 0 0.05  0 0 0 0 0  0 0 0 0.18 0"/>
+      <feComposite in2="SourceGraphic" operator="in"/>
+      <feMerge><feMergeNode in="SourceGraphic"/><feMergeNode/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- sky -->
+  <rect width="1600" height="700" fill="url(#sky)"/>
+
+  <!-- clouds: layered ellipses with soft radial glow -->
+  <g opacity="0.95">
+    <ellipse cx="220" cy="180" rx="160" ry="38" fill="url(#cloud-grad)"/>
+    <ellipse cx="290" cy="200" rx="120" ry="30" fill="url(#cloud-grad)"/>
+    <ellipse cx="180" cy="210" rx="100" ry="28" fill="url(#cloud-grad)"/>
+
+    <ellipse cx="700" cy="120" rx="190" ry="34" fill="url(#cloud-grad)"/>
+    <ellipse cx="780" cy="145" rx="140" ry="30" fill="url(#cloud-grad)"/>
+
+    <ellipse cx="1150" cy="220" rx="180" ry="36" fill="url(#cloud-grad)"/>
+    <ellipse cx="1080" cy="245" rx="120" ry="28" fill="url(#cloud-grad)"/>
+
+    <ellipse cx="1420" cy="100" rx="130" ry="26" fill="url(#cloud-grad)"/>
+    <ellipse cx="1480" cy="125" rx="100" ry="22" fill="url(#cloud-grad)"/>
+
+    <ellipse cx="500" cy="320" rx="220" ry="20" fill="url(#cloud-grad)" opacity="0.55"/>
+    <ellipse cx="1300" cy="380" rx="260" ry="22" fill="url(#cloud-grad)" opacity="0.45"/>
+    <ellipse cx="100" cy="430" rx="200" ry="16" fill="url(#cloud-grad)" opacity="0.5"/>
+  </g>
+
+  <!-- distant rolling hill silhouette -->
+  <path d="M0,640 Q400,580 800,610 T1600,605 L1600,720 L0,720 Z" fill="#5b9b3a" opacity="0.8"/>
+
+  <!-- main hill -->
+  <path d="M0,720 C 250,560 600,500 1000,560 C 1300,605 1500,650 1600,680 L1600,1000 L0,1000 Z" fill="url(#hill)"/>
+
+  <!-- subtle highlight ridge on hill top -->
+  <path d="M180,690 C 400,580 700,540 1000,580 C 1250,615 1450,660 1580,685"
+        fill="none" stroke="#a3da6f" stroke-width="3" opacity="0.5"/>
+
+  <!-- darker grass shadow at bottom -->
+  <rect y="900" width="1600" height="100" fill="#1d4708" opacity="0.45"/>
+</svg>
