@@ -282,9 +282,9 @@ const MediaPlayerApp = {
       </div>
       <div class="mp-embed" style="margin-bottom:8px;"></div>
       <div class="mp-controls">
-        <button class="mp-prev">◀◀</button>
-        <button class="mp-play">▶</button>
-        <button class="mp-next">▶▶</button>
+        <button class="mp-prev">Prev</button>
+        <button class="mp-play">Play</button>
+        <button class="mp-next">Next</button>
       </div>
     `;
     let idx = 0;
